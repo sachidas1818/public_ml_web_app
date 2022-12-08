@@ -2,6 +2,12 @@ import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
 
+<style>
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+</style>
+
 # # import warnings filter
 # from warnings import simplefilter
 # # ignore all future warnings
