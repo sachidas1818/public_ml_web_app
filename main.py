@@ -13,6 +13,8 @@ diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
 heart_disease_model = pickle.load(open('heart_disease_model.sav','rb'))
 parkinsons_model = pickle.load(open('parkinsons_model.sav', 'rb'))
 kstone_model = pickle.load(open('kstone_model.sav', 'rb'))
+lung_model = pickle.load(open('lung_model.sav', 'rb'))
+breast_model = pickle.load(open('breast_cancer_model.sav', 'rb'))
 
 
 # sidebar for navigation
@@ -23,8 +25,10 @@ with st.sidebar:
                           ['Diabetes Prediction',
                            'Heart Disease Prediction',
                            'Parkinsons Prediction',
-                           'Kidney Stone Prediction'],
-                          icons=['activity','heart','person','app'],
+                           'Kidney Stone Prediction',
+                           'Lung Cancer Prediction',
+                           'Breast Cancer Prediction'],
+                          icons=['activity','heart','person','app','asterisk','app-indicator'],
                           default_index=0)
 
 
@@ -286,3 +290,120 @@ if (selected == 'Kidney Stone Prediction'):
           kidney_diagnosis = "The person has Kidney Stone disease "
         
     st.success(kidney_diagnosis)
+    
+    
+# Diabetes Prediction Page
+if (selected == 'Lung Cancer Prediction'):
+    
+    # page title
+    st.title('Lung Cancer Prediction using ML')
+    
+    
+    # getting the input data from the user
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        AGE = st.text_input('Age of the patient')
+        
+    with col2:
+        SMOKING = st.text_input('Smoking: YES=2 , NO=1')
+    
+    with col3:
+        YELLOW_FINGERS = st.text_input('Yellow fingers: YES=2 , NO=1')
+    
+    with col1:
+        ANXIETY = st.text_input('Anxiety: YES=2 , NO=1')
+    
+    with col2:
+        PEER_PRESSURE = st.text_input('Peer_pressure: YES=2 , NO=1')
+    
+    with col3:
+        CHRONIC_DISEASE = st.text_input('Chronic Disease: YES=2 , NO=1')
+    
+    with col1:
+        FATIGUE = st.text_input('Fatigue: YES=2 , NO=1')
+    
+    with col2:
+        ALLERGY = st.text_input('Allergy: YES=2 , NO=1')
+
+    with col3:
+        WHEEZING = st.text_input('Wheezing: YES=2 , NO=1')
+
+    with col1:
+        ALCOHOL_CONSUMING = st.text_input('Consume Alcohol: YES=2 , NO=1')
+    
+    with col2:
+        COUGHING = st.text_input('Coughing: YES=2 , NO=1')
+
+    with col3:
+        SHORTNESS_OF_BREATH = st.text_input('Shortness of Breath: YES=2 , NO=1')
+
+    with col1:
+        SWALLOWING_DIFFICULTY = st.text_input('Swallowing Difficulty: YES=2 , NO=1')
+    
+    with col2:
+        CHEST_PAIN = st.text_input('Chest pain: YES=2 , NO=1')
+
+    
+    # code for Prediction
+    lung_diagnosis = ''
+    
+    # creating a button for Prediction
+    
+    if st.button('Lung Cancer Test Result'):
+        lung_prediction = lung_model.predict([[AGE, SMOKING, YELLOW_FINGERS, ANXIETY, PEER_PRESSURE, CHRONIC_DISEASE, FATIGUE, ALLERGY,WHEEZING,ALCOHOL_CONSUMING,COUGHING,SHORTNESS_OF_BREATH,SWALLOWING_DIFFICULTY,CHEST_PAIN]])
+        
+        if (lung_prediction[0] == 1):
+          lung_diagnosis = 'The person has lung cancer'
+        else:
+          lung_diagnosis = 'The Person does not have lung Cancer'
+        
+    st.success(lung_diagnosis)
+
+
+
+
+#breast cancer
+
+
+# breast cancer Prediction Page
+if (selected == 'Breast Cancer Prediction'):
+    
+    # page title
+    st.title('Breast Cancer Prediction using ML')
+    
+    
+    # getting the input data from the user
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        mean_radius = st.text_input('Mean_radius: mean of distances from center to points on the perimeter')
+        
+    with col2:
+        mean_texture = st.text_input('Mean_texture: standard deviation of gray-scale values')
+    
+    with col1:
+        mean_perimeter = st.text_input('Mean_perimeter: mean size of the core tumor')
+    
+    with col2:
+        mean_area = st.text_input('Mean_area: mean area of the core tumor')
+    
+    with col1:
+        mean_smoothness = st.text_input('Mean_smoothness: mean of local variation in radius lengths')
+    
+    
+    
+    # code for Prediction
+    breast_diagnosis = ''
+    
+    # creating a button for Prediction
+    
+    if st.button('Breast Cancer Test Result'):
+        Breast_Cancer_prediction = breast_model.predict([[mean_radius, mean_texture, mean_perimeter, mean_area, mean_smoothness]])
+        
+        if (Breast_Cancer_prediction[0] == 1):
+          breast_diagnosis = 'The person has breast cancer'
+        else:
+          breast_diagnosis = 'The Person does not have breast Cancer'
+        
+    st.success(breast_diagnosis)  
