@@ -283,6 +283,6 @@ if (selected == 'Kidney Stone Prediction'):
         if (kidney_prediction[0] == 0):
           kidney_diagnosis = "The person does not have Kidney Stone disease"
         else:
-          kidney_diagnosiss = "The person has Kidney Stone disease "
+          kidney_diagnosis = "The person has Kidney Stone disease "
         
     st.success(kidney_diagnosis)
