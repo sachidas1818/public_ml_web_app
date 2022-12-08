@@ -2,11 +2,8 @@ import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
 
-<style>
-body {
-  font-family: "Times New Roman", Times, serif;
-}
-</style>
+with open( "app\style.css" ) as css:
+    st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
 # # import warnings filter
 # from warnings import simplefilter
