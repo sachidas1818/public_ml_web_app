@@ -280,9 +280,9 @@ if (selected == 'Kidney Stone Prediction'):
     if st.button("kidney stone Test Result"):
         kidney_prediction = kstone_model.predict([[gravity, ph, osmo, cond, urea, calc]])                          
         
-        if (kidney_prediction[0] == 1):
-          kidney_diagnosis = "The person has Kidney Stone disease"
+        if (kidney_prediction[0] == 0):
+          kidney_diagnosis = "The person does not have Kidney Stone disease"
         else:
-          kidney_diagnosiss = "The person does not have Kidney Stone disease"
+          kidney_diagnosiss = "The person has Kidney Stone disease "
         
     st.success(kidney_diagnosis)
