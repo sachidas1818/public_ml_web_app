@@ -2,7 +2,7 @@ import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
 
-with open( "app\style.css" ) as css:
+with open( "style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
 # # import warnings filter
@@ -48,7 +48,7 @@ if (selected == 'Diabetes Prediction'):
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        Pregnancies = st.text_input('𝐍𝐮𝐦𝐛𝐞𝐫 𝐨𝐟 𝐏𝐫𝐞𝐠𝐧𝐚𝐧𝐜𝐢𝐞𝐬')
+        Pregnancies = st.text_input('Number of Prgnancies')
         
     with col2:
         Glucose = st.text_input('Glucose Level')
